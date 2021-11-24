@@ -18,6 +18,10 @@
 	<link rel="stylesheet" href="<c:url value="/static/css/font-awesome.css"/>?v=0.0.1"> 
 	<!-- //font-awesome icons CSS-->
 
+	<!--webfonts-->
+	<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+	<!--//webfonts--> 
+	
 	<!-- side nav css file -->
 	<link  media='all' rel="stylesheet" href="<c:url value='/static/css/SidebarNav.min.css'/>?v=0.0.1">
 	<!-- //side nav css file --> 
@@ -25,7 +29,7 @@
 	<script src="<c:url value="/static/js/jquery-1.11.1.min.js" />?v=0.0.1"></script>
 	<script src="<c:url value="/static/js/modernizr.custom.js" />?v=0.0.1"></script>
 	
-
+	
 	
 	<!-- chart -->
 	<script src="<c:url value="/static/js/Chart.js" />?v=0.0.1"></script>

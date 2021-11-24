@@ -1,16 +1,54 @@
 package com.manage.Service.Implement;
 
 
+import java.sql.Date;
+import java.util.List;
 
-public class AccountService  {
-	private String a;
+import com.manage.DAL.IAccountDAL;
+import com.manage.DAL.Implement.AccountDAL;
+import com.manage.Models.AccountModel;
 
-	public String getA() {
-		return a;
+import org.json.simple.JSONObject;
+
+import com.manage.Service.IAccountService;
+
+public class AccountService implements IAccountService  {
+	private IAccountDAL accountDAL;
+	
+	public AccountService() {
+		accountDAL = new AccountDAL();
 	}
 
-	public void setA(String a) {
-		this.a = a;
+
+	@Override
+	public String insertAccount(int id, String user, String pass, String name, String gender, String address,
+			String phone, String email, Date createat) {
+		JSONObject res = new JSONObject();
+		String message = "Insert product failed because something went wrong!";
+		res.put("message",message);
+		return res.toJSONString();
+	}
+
+	@Override
+	public String removeAccount(int id) {
+		JSONObject res = new JSONObject();
+		String status = "ERROR";
+		String message = "Remove account failed because something went wrong!";
+		int removed = accountDAL.removeAccount(id);
+		if (removed > 0) {
+			status = "SUCCESS";
+			message = "The product has been deleted";
+		}
+		res.put("status", status);
+		res.put("message", message);
+		res.put("id", id);
+		return res.toJSONString();
+	}
+
+
+	@Override
+	public List<AccountModel> getAccount() {
+		return accountDAL.getAccount();
 	}
 	
 }
