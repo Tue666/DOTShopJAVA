@@ -1,7 +1,6 @@
 package com.manage.Service.Implement;
 
 
-import java.sql.Date;
 import java.util.List;
 
 import com.manage.DAL.IAccountDAL;
@@ -21,12 +20,9 @@ public class AccountService implements IAccountService  {
 
 
 	@Override
-	public String insertAccount(int id, String user, String pass, String name, String gender, String address,
-			String phone, String email, Date createat) {
-		JSONObject res = new JSONObject();
-		String message = "Insert product failed because something went wrong!";
-		res.put("message",message);
-		return res.toJSONString();
+	public int insertAccount(String phone, String pass, String name, String gender, String address,String email) {
+		
+		return accountDAL.insertAccount(phone, pass, name, gender, address, email);
 	}
 
 	@Override

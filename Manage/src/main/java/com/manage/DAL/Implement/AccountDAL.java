@@ -1,6 +1,6 @@
 package com.manage.DAL.Implement;
 
-import java.sql.Date;
+
 import java.util.List;
 
 import com.manage.DAL.IAccountDAL;
@@ -15,9 +15,9 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		return ExecuteQuery(query, new AccountMapper());
 	}
 	@Override
-	public int insertAccount(int id,String user,String pass,String name, String gender, String address,String phone,String email,Date createat) {
-		String query = "INSERT INTO account(id_account, username, password, name, gender, address, phone, email, createat) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		return ExecuteInsert(query, id, user, pass, name, gender, address, phone, email, createat);
+	public int insertAccount(String phone,String pass,String name, String gender, String address,String email) {
+		String query = "INSERT INTO account(phone, password, name, gender, address, email) VALUES (?, ?, ?, ?, ?, ?)";
+		return ExecuteInsert(query, phone, pass, name, gender, address,email);
 	}
 
 	@Override

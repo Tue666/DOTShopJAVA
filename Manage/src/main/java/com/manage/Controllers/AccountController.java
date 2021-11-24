@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import com.manage.Service.IAccountService;
 import com.manage.Service.Implement.AccountService;
-
+import com.manage.DAL.Implement.AccountDAL;
+import com.manage.Models.AccountModel;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,5 +30,18 @@ public class AccountController extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");
 		rd.forward(request, response);
 	}
-	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String phone = request.getParameter("Phone");
+		String password = request.getParameter("Password");
+		String name = request.getParameter("Name");
+		String gender = request.getParameter("Gender");
+		String address = request.getParameter("Address");
+		String email = request.getParameter("Email");
+		
+		accountService.insertAccount(phone, password, name, gender, address, email);
+		request.setAttribute("accounts", accountService.getAccount());
+		RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");
+		rd.forward(request, response);
+	}
 }

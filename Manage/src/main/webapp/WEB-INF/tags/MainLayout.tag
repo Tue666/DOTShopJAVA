@@ -29,8 +29,6 @@
 	<script src="<c:url value="/static/js/jquery-1.11.1.min.js" />?v=0.0.1"></script>
 	<script src="<c:url value="/static/js/modernizr.custom.js" />?v=0.0.1"></script>
 	
-	
-	
 	<!-- chart -->
 	<script src="<c:url value="/static/js/Chart.js" />?v=0.0.1"></script>
 	<!-- //chart -->
