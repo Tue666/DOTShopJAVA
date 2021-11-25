@@ -34,5 +34,28 @@ public class AccountService implements IAccountService  {
 	public List<AccountModel> getAccount() {
 		return accountDAL.getAccount();
 	}
+
+
+	@Override
+	public int updateAccount(String phone, String name, String gender, String address, String email, String type,
+			String status,int id) {
+		return accountDAL.updateAccount(phone, name, gender, address, email, type, status,id);
+	}
+
+
+	@Override
+	public AccountModel findByID(int id) {
+		
+		return accountDAL.findByID(id);
+	}
+
+
+	@Override
+	public int updatePasswordto1(String password, int id) {
+		return accountDAL.updatePasswordto1(password,id);
+	}
+
+
+
 	
 }
