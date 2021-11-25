@@ -1,24 +1,15 @@
 package com.manage.Models;
 
-import java.sql.Date;
 
-public class CategoryModel {
-	private int ID;
+public class CategoryModel extends AbstractModel{
 	private String Title;
 	private String Slug;
 	private String Image;
-	private int ParentID;
+	private String ParentID;
 	private String DisplayOrder;
 	private String Banner;
 	private String Status;
-	private Date CreatedAt;
 	
-	public int getID() {
-		return ID;
-	}
-	public void setID(int iD) {
-		ID = iD;
-	}
 	public String getTitle() {
 		return Title;
 	}
@@ -37,10 +28,10 @@ public class CategoryModel {
 	public void setImage(String image) {
 		Image = image;
 	}
-	public int getParentID() {
+	public String getParentID() {
 		return ParentID;
 	}
-	public void setParentID(int parentID) {
+	public void setParentID(String parentID) {
 		ParentID = parentID;
 	}
 	public String getDisplayOrder() {
@@ -61,13 +52,4 @@ public class CategoryModel {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public Date getCreatedAt() {
-		return CreatedAt;
-	}
-	public void setCreatedAt(Date createdAt) {
-		CreatedAt = createdAt;
-	}
-
-	
-
 }

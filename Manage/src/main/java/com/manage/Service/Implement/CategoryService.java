@@ -16,13 +16,11 @@ public class CategoryService implements ICategoryService{
 	public CategoryService() {
 		categoryDAL = new CategoryDAL();
 	}
-
 	@Override
-	public String insertCategory(int id,String title,String slug,String image, int parentID, String displayorder,String banner,String status,Date createdat) {
-		JSONObject res = new JSONObject();
-		String message = "Insert category failed because something went wrong!";
-		res.put("message",message);
-		return res.toJSONString();
+	public int insertCategory(String title,String slug,String image, String parentID, 
+			String displayorder,String banner,String status,String createdat,String createdby,String updatedat,String updatedby) {
+		
+		return categoryDAL.insertCategory(title, slug, image, parentID, displayorder, banner, status, createdat, createdby, updatedat, updatedby);
 	}
 
 	@Override

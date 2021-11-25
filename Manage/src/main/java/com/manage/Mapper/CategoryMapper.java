@@ -14,11 +14,14 @@ public class CategoryMapper implements IMapper<CategoryModel> {
 			categoryModel.setTitle(rs.getString("Title"));
 			categoryModel.setSlug(rs.getString("Slug"));
 			categoryModel.setImage(rs.getString("Image"));
-			categoryModel.setParentID(rs.getInt("ParentID"));
+			categoryModel.setParentID(rs.getString("ParentID"));
 			categoryModel.setDisplayOrder(rs.getString("DisplayOrder"));
 			categoryModel.setBanner(rs.getString("Banner"));
 			categoryModel.setStatus(rs.getString("Status"));
 			categoryModel.setCreatedAt(rs.getDate("CreatedAt"));
+			categoryModel.setCreatedBy(rs.getString("CreatedBy"));
+			categoryModel.setUpdatedAt(rs.getDate("UpdatedAt"));
+			categoryModel.setUpdatedBy(rs.getString("UpdatedBy"));
 			return categoryModel;
 		} catch (SQLException e) {
 			System.out.println(e);

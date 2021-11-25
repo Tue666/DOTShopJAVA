@@ -9,7 +9,8 @@ public interface ICategoryDAL {
 	
 	List<CategoryModel> getCategory();
 	
-	int insertCategory(int id,String title,String slug,String image, int parentID, String displayorder,String banner,String status,Date createdat);
+	int insertCategory
+	(String title,String slug,String image, String parentID, String displayorder,String banner,String status,String createdat,String createdby,String updatedat,String updatedby);
 	
 	int removeCategory (int id);
 }

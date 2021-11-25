@@ -15,9 +15,9 @@ public class CategoryDAL extends AbstractDAL implements ICategoryDAL{
 		return ExecuteQuery(query, new CategoryMapper());
 	}
 	@Override
-	public int insertCategory(int id,String title,String slug,String image, int parentID, String displayorder,String banner,String status,Date createdat) {
-		String query = "INSERT INTO category(ID, Title, Slug, Image, ParentID, DisplayOrder, Banner, Status, CreatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		return ExecuteInsert(query, id, title, slug, image, parentID, displayorder, banner, status, createdat);
+	public int insertCategory( String title,String slug,String image, String parentID, String displayorder,String banner,String status,String createdat,String createdby,String updatedat,String updatedby) {
+		String query = "INSERT INTO category( Title, Slug, Image, ParentID, DisplayOrder, Banner, Status, CreatedAt, CreatedBy, UpdatedAt, UpdatedBy) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		return ExecuteInsert(query, title, slug, image, parentID, displayorder, banner, status, createdat, createdby, updatedat, updatedby);
 	}
 
 	@Override
