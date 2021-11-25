@@ -9,7 +9,23 @@ public class AccountModel{
 	private String Gender;
 	private String Address;
 	private String Email;
+	private String Type;
+	private String Status;
 	
+	
+	
+	public String getType() {
+		return Type;
+	}
+	public void setType(String type) {
+		Type = type;
+	}
+	public String getStatus() {
+		return Status;
+	}
+	public void setStatus(String status) {
+		Status = status;
+	}
 	public int getID() {
 		return ID;
 	}

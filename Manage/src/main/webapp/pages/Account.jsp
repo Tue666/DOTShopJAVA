@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="l" tagdir="/WEB-INF/tags"%>
 <%@ include file="/common/taglib.jsp" %>
 <l:MainLayout title="Account | DOTShop - Administrator">
@@ -23,7 +23,10 @@
 			<tr>
 				<td><h4>Phone</h4></td>
 				<td>
-					<input id="phone" value="" type="text" class="form-control" placeholder="Phone..." name="Phone" required>
+					<input id="phone" value="" type="text" class="form-control" placeholder="Phone..." name="Phone" required
+					pattern="[0-9]{10}" 
+					title="Số điện thoại không được nhập kí tự và phải có độ dài là 10 số. VD: 0906708888"
+					>
 					<span id="availability"></span>
 				</td>
 			</tr>
@@ -37,7 +40,12 @@
 			</tr>
 			<tr>
 				<td><h4>Gender</h4></td>
-				<td><input type="text" class="form-control" placeholder="Gender..." name="Gender" required ></td>
+				<td>
+					<select class="form-control" required name="Gender">
+						<option value="Male" selected>Male</option>
+						<option value="Female">Female</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><h4>Address</h4></td>
@@ -45,14 +53,14 @@
 			</tr>
 			<tr>
 				<td><h4>Email</h4></td>
-				<td><input type="text" class="form-control" placeholder="Email..." name="Email" required ></td>
+				<td><input type="email" class="form-control" placeholder="Email..." name="Email" required ></td>
 			</tr>
 			<tr>
-				<td><h4>Account classification</h4></td>
+				<td><h4>Account Type</h4></td>
 				<td>
-					<select class="form-control" required name="phanquyen">
-						<option value="1" selected>Admin</option>
-						<option value="0">Guest</option>
+					<select class="form-control" required name="typeaccount">
+						<option value="Admin" selected>Admin</option>
+						<option value="Guest">Guest</option>
 					</select>
 				</td>
 			</tr>
@@ -60,8 +68,8 @@
 				<td><h4>Status</h4></td>
 				<td>
 					<select class="form-control" required name="status">
-						<option value="1" selected>Active Account</option>
-						<option value="0">Block Account</option>
+						<option value="Active" selected>Active Account</option>
+						<option value="Block">Block Account</option>
 					</select>
 				</td>
 			</tr>

@@ -9,7 +9,7 @@ public interface IAccountService {
 	
 	List<AccountModel> getAccount();
 	
-	int insertAccount(String phone,String pass,String name, String gender, String address,String email);
+	int insertAccount(String phone,String pass,String name, String gender, String address,String email,String type,String status);
 	
-	String removeAccount (int id);
+	int removeAccount (int id);
 }

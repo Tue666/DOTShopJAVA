@@ -38,8 +38,10 @@ public class AccountController extends HttpServlet {
 		String gender = request.getParameter("Gender");
 		String address = request.getParameter("Address");
 		String email = request.getParameter("Email");
+		String type = request.getParameter("typeaccount");
+		String status = request.getParameter("status");
 		
-		accountService.insertAccount(phone, password, name, gender, address, email);
+		accountService.insertAccount(phone, password, name, gender, address, email,type,status);
 		request.setAttribute("accounts", accountService.getAccount());
 		RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");
 		rd.forward(request, response);

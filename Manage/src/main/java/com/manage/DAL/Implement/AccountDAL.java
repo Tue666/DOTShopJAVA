@@ -15,9 +15,9 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		return ExecuteQuery(query, new AccountMapper());
 	}
 	@Override
-	public int insertAccount(String phone,String pass,String name, String gender, String address,String email) {
-		String query = "INSERT INTO account(phone, password, name, gender, address, email) VALUES (?, ?, ?, ?, ?, ?)";
-		return ExecuteInsert(query, phone, pass, name, gender, address,email);
+	public int insertAccount(String phone,String pass,String name, String gender, String address,String email,String type,String status) {
+		String query = "INSERT INTO account(phone, password, name, gender, address, email,typeaccount,status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		return ExecuteInsert(query, phone, pass, name, gender, address,email,type,status);
 	}
 
 	@Override

@@ -17,6 +17,8 @@ public class AccountMapper implements IMapper<AccountModel> {
 			accountModel.setGender(rs.getString("gender"));
 			accountModel.setAddress(rs.getString("address"));
 			accountModel.setEmail(rs.getString("email"));
+			accountModel.setType(rs.getString("typeaccount"));
+			accountModel.setStatus(rs.getString("status"));
 			return accountModel;
 		} catch (SQLException e) {
 			System.out.println(e);
