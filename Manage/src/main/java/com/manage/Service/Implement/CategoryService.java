@@ -1,9 +1,6 @@
 package com.manage.Service.Implement;
 
-import java.sql.Date;
 import java.util.List;
-
-import org.json.simple.JSONObject;
 
 import com.manage.DAL.ICategoryDAL;
 import com.manage.DAL.Implement.CategoryDAL;
@@ -24,25 +21,24 @@ public class CategoryService implements ICategoryService{
 	}
 
 	@Override
-	public String removeCategory(int id) {
-		JSONObject res = new JSONObject();
-		String status = "ERROR";
-		String message = "Remove category failed because something went wrong!";
-		int removed = categoryDAL.removeCategory(id);
-		if (removed > 0) {
-			status = "SUCCESS";
-			message = "The category has been deleted";
-		}
-		res.put("status", status);
-		res.put("message", message);
-		res.put("id", id);
-		return res.toJSONString();
-	}
-
-
-	@Override
 	public List<CategoryModel> getCategory() {
 		return categoryDAL.getCategory();
 	}
 	
+	@Override
+	public int updateCategory(String title,String slug,String image, String parentID, 
+			String displayorder,String banner,String status,String createdat,String createdby,String updatedat,String updatedby, int ID) {
+		return categoryDAL.updateCategory(title, slug, image, parentID, displayorder, banner, status, createdat, createdby, updatedat, updatedby, ID);
+	}
+
+	@Override
+	public CategoryModel findByID(int ID) {
+		
+		return categoryDAL.findByID(ID);
+	}
+	
+	@Override
+	public int removeCategory(int ID) {
+		return categoryDAL.removeCategory(ID);
+	}
 }
