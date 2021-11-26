@@ -23,7 +23,7 @@
 			<tr>
 				<td><h4>Phone</h4></td>
 				<td>
-					<input id="phone" value="" type="text" class="form-control" placeholder="Phone..." name="Phone" required
+					<input id="myphone" value="" type="text" class="form-control" placeholder="Phone..." name="Phone" required
 					pattern="[0-9]{10}" 
 					title="Phone numbers cannot enter characters and must be 10 digits long. Example: 0906708888"
 					>
@@ -75,15 +75,20 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="submit" class="btn btn-danger" id="" name="" value="Add">
+					<button type="submit" class="btn btn-primary" title="Add Account" id="register" disabled>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+  							<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+  							<path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+						</svg>
+					</button>
 				</td>
 			</tr>
 		</form>
 	</table>
 </div>
 	<div>
-		<table id="table_id" class="display">
-		    <thead>
+		<table id="table_id" class="table table-striped table-bordered display">
+		    <thead class="thead-dark">
 		        <tr>
 		        	<th>ID</th>
 		        	<th>Phone</th>
@@ -108,21 +113,56 @@
 		            	<td><c:out value="${account.getType()}"/></td>
 		            	<td><c:out value="${account.getStatus()}"/></td>
 		            	<td>
-		            		<a href="<c:url value="/account/edit/${account.getID() }" />">       		
-		            		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-  								<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-  								<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-							</svg>
-							</a> 
-							<span style="font-size: 25px;">|</span>
-							<form action=<c:url value="/account/remove/${account.getID() }"/> method="POST">
-								<input onclick="return confirm('Are you sure to Remove ?')" type="submit" class="btn btn-danger" id="" name="" value="Remove">			
-							</form>
+		            		<div class="manager-button" style="display: flex">
+				            	<a href="<c:url value="/account/edit/${account.getID() }" />">
+				            		<button class="btn btn-info btn-xs" style="margin-right:10px" title="Edit Account">    		
+						            	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+  											<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+										</svg>
+									</button>
+								</a>
+								<form action=<c:url value="/account/remove/${account.getID() }"/> method="POST">
+									<button onclick="return confirm('Are you sure to Remove this account ?')" type="submit" class="btn btn-danger btn-xs" title="Remove Account">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
+	  										<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+	 	 									<path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+										</svg>
+									</button>			
+								</form>
+							</div>
 						</td>
 		       		</tr>
 		        </c:forEach>
 		    </tbody>  
 		</table>
 	</div>
+	<script>
+	const pathname = window.location.pathname;
+	const appName = pathname.substr(0, window.location.pathname.indexOf("/", 2));
+	const ajaxURL = window.location.origin + appName + '/ajax';
+		$(document).ready(function(){
+			$('#myphone').keyup(function(){
+				var myphone = $(this).val();
+				$.ajax({
+					url:ajaxURL,
+					type:'POST',
+					data:{
+						myphone:myphone,
+						action:"Check_Phone"
+					},
+					success:function(result){
+				    	if(result == "OK"){
+				            $('#availability').html('<span class="text-danger"><b>Phone is existed !</b></span>');
+				            document.getElementById("register").disabled = true;
+				     	}
+				        else{
+				            $('#availability').html('<span class="text-danger"></span>');
+				            document.getElementById("register").disabled = false;
+				    	}
+					}
+				})
+			});
+		})
+	</script>
 	</jsp:body>
 </l:MainLayout>

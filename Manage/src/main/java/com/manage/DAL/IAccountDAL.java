@@ -14,6 +14,8 @@ public interface IAccountDAL {
 	
 	int updatePasswordto1(String password, int id);
 	
+	AccountModel checkPhoneExisted(String phone);
+	
 	AccountModel findByID(int id);
 	
 	int removeAccount (int id);

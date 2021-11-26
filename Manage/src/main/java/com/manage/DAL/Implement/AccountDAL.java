@@ -40,4 +40,9 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		String query = "Update account Set password = ? WHERE id_account = ? ";
 		return ExecuteUpdate(query,password,id);
 	}
+	@Override
+	public AccountModel checkPhoneExisted(String phone) {
+		String query = "SELECT * FROM account WHERE phone = ?";
+		return ExecuteOne(query,new AccountMapper(),phone);
+	}
 }

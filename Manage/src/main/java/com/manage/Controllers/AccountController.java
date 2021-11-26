@@ -40,30 +40,34 @@ public class AccountController extends HttpServlet {
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String path = request.getPathInfo();
+		String phone = request.getParameter("Phone");
+		String name = request.getParameter("Name");
+		String gender = request.getParameter("Gender");
+		String address = request.getParameter("Address");
+		String email = request.getParameter("Email");
+		String type = request.getParameter("typeaccount");
+		String status = request.getParameter("status");
+		
 		if (path != null) {
+			
 			String action = path.substring(1).split("/")[0];
 			String id = path.substring(1).split("/")[1];
-			int idaccount = Integer.parseInt(id);
+			int idaccount = Integer.parseInt(id);	
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");
+			
 			switch (action) {
 			case "edit":
 				
-				String phone = request.getParameter("Phone");
-				String name = request.getParameter("Name");
-				String gender = request.getParameter("Gender");
-				String address = request.getParameter("Address");
-				String email = request.getParameter("Email");
-				String type = request.getParameter("typeaccount");
-				String status = request.getParameter("status");
-				
-				String password = request.getParameter("ResetPassword");
-				accountService.updatePasswordto1(password, idaccount);
+				String resetpassword = request.getParameter("ResetPassword");
+				accountService.updatePasswordto1(resetpassword, idaccount);
 				accountService.updateAccount(phone, name, gender, address, email, type, status, idaccount);
 				request.setAttribute("accounts", accountService.getAccount());
 				rd.forward(request, response);
 				break;
 			case "remove":
+				
 				accountService.removeAccount(idaccount);
 				request.setAttribute("accounts", accountService.getAccount());
 				rd.forward(request, response);
@@ -73,15 +77,7 @@ public class AccountController extends HttpServlet {
 			}
 		}
 		else {
-			String phone = request.getParameter("Phone");
 			String password = request.getParameter("Password");
-			String name = request.getParameter("Name");
-			String gender = request.getParameter("Gender");
-			String address = request.getParameter("Address");
-			String email = request.getParameter("Email");
-			String type = request.getParameter("typeaccount");
-			String status = request.getParameter("status");
-			
 			accountService.insertAccount(phone, password, name, gender, address, email,type,status);
 			request.setAttribute("accounts", accountService.getAccount());
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");

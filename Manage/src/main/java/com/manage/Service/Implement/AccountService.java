@@ -56,6 +56,10 @@ public class AccountService implements IAccountService  {
 	}
 
 
+	@Override
+	public Boolean checkPhoneExisted(String phone) {
+		return accountDAL.checkPhoneExisted(phone) != null;
+	}
 
 	
 }

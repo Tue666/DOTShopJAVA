@@ -15,6 +15,8 @@ public interface IAccountService {
 	
 	int updatePasswordto1(String password,int id);
 	
+	Boolean checkPhoneExisted(String phone);
+	
 	AccountModel findByID(int id);
 	
 	int removeAccount (int id);
