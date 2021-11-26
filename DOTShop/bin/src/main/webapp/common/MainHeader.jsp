@@ -21,7 +21,11 @@
 			</div>
 			<div class="mx-2"></div>
 			<div class="nav-child">
-				<a href="<c:url value="/account" />">Tài khoản</a>
+				<a href="#">Sign in</a>
+			</div>
+			<span>|</span>
+			<div class="nav-child">
+				<a href="#">Sign up</a>
 			</div>
 		</div>
 	</div>

@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/dotshop/Controllers/AccountController.java=UTF-8
+encoding//src/main/java/com/dotshop/DAL/Implement/AccountDAL.java=UTF-8
+encoding//src/main/java/com/dotshop/Models/AccountModel.java=UTF-8
+encoding//src/main/java/com/dotshop/Service/IAccountService.java=UTF-8
+encoding//src/main/java/com/dotshop/Service/Implement/AccountService.java=UTF-8
