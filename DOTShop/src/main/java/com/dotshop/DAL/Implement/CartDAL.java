@@ -26,6 +26,12 @@ public class CartDAL extends AbstractDAL implements ICartDAL {
 		String query = "SELECT p.ID AS ProductID, p.Name AS ProductName, p.Slug AS ProductSlug, p.Image AS ProductImage, p.Price AS ProductPrice, p.Discount AS ProductDiscount, p.VATFee, c.Quantity AS CartQuantity, c.Checked AS CartChecked FROM product AS p JOIN cart AS c ON p.ID = c.ProductID WHERE c.UserID = ? ORDER BY c.CreatedAt DESC";
 		return ExecuteQuery(query, new CartItemMapper(), userID);
 	}
+	
+	@Override
+	public List<CartItem> findSelectedByUserID(int userID) {
+		String query = "SELECT p.ID AS ProductID, p.Name AS ProductName, p.Slug AS ProductSlug, p.Image AS ProductImage, p.Price AS ProductPrice, p.Discount AS ProductDiscount, p.VATFee, c.Quantity AS CartQuantity, c.Checked AS CartChecked FROM product AS p JOIN cart AS c ON p.ID = c.ProductID WHERE c.UserID = ? AND Checked = true ORDER BY c.CreatedAt DESC";
+		return ExecuteQuery(query, new CartItemMapper(), userID);
+	}
 
 	@Override
 	public int insert(int userID, int productID, int quantity, String userName) {
@@ -64,4 +70,5 @@ public class CartDAL extends AbstractDAL implements ICartDAL {
 			return ExecuteUpdate(query, checked, userName, userID, productID);
 		}
 	}
+	
 }

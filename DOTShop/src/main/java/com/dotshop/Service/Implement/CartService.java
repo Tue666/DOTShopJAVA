@@ -37,6 +37,11 @@ public class CartService implements ICartService {
 	public List<CartItem> findCartByUserID(int userID) {
 		return cartDAL.findCartByUserID(userID);
 	}
+	
+	@Override
+	public List<CartItem> findSelectedByUserID(int userID) {
+		return cartDAL.findSelectedByUserID(userID);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -125,4 +130,5 @@ public class CartService implements ICartService {
 		int res = cartDAL.toggleChecked(userID, productID, checked, userName);
 		return res > 0 ? "SUCCESS" : "FAILED";
 	}
+
 }

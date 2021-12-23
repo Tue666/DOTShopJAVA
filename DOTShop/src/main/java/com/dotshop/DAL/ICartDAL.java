@@ -12,6 +12,8 @@ public interface ICartDAL {
 	
 	List<CartItem> findCartByUserID(int userID);
 	
+	List<CartItem> findSelectedByUserID(int userID);
+	
 	int insert(int userID, int productID, int quantity, String userName);
 	
 	int remove(int userID, int productID);
