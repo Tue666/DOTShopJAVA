@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(value = "/payment")
 public class PaymentController extends HttpServlet {
@@ -25,7 +26,8 @@ public class PaymentController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int userID = 1;
+		HttpSession session = request.getSession(false);
+		int userID = session.getAttribute("id") == null ? 0 : Integer.parseInt(session.getAttribute("id").toString());
 
 		List<CartItem> cartSelected = cartService.findSelectedByUserID(userID);
 

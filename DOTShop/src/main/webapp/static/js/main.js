@@ -68,3 +68,15 @@ if (inputElement && plusBtn) {
 		}
 	});
 }
+
+// Validate cart selected to navigate payment page
+const paymentBtn = document.querySelector('.payment-btn');
+paymentBtn && paymentBtn.addEventListener('click', () => {
+	const cartContent = document.querySelector('.cart-content');
+	const selectedItems = cartContent.querySelectorAll('input[type="checkbox"]:checked');
+	if (selectedItems.length < 1) {
+		showToast('Failure!', 'Please select the product to remove', 'ERROR', 'bottom-center');
+	} else {
+		window.location.href = appName + '/payment';
+	}
+});

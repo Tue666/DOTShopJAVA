@@ -19,6 +19,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(value = "/ajax")
 public class Ajax extends HttpServlet {
@@ -36,7 +37,8 @@ public class Ajax extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		JSONObject res = new JSONObject();
-		int userID = 1;
+		HttpSession session = request.getSession(false);
+		int userID = session.getAttribute("id") == null ? 0 : Integer.parseInt(session.getAttribute("id").toString());
 		String userName = "admin";
 		switch (action) {
 		case "LOAD_LIST_PRODUCT": {
@@ -56,8 +58,12 @@ public class Ajax extends HttpServlet {
 		}
 			break;
 		case "LOAD_CART_BADGE": {
-			int totalRecordsByUser = cartService.totalRecordsByUserID(userID);
-			response.getWriter().write(Integer.toString(totalRecordsByUser));
+			if (userID == 0) {
+				response.getWriter().write("0");
+			} else {
+				int totalRecordsByUser = cartService.totalRecordsByUserID(userID);
+				response.getWriter().write(Integer.toString(totalRecordsByUser));
+			}
 		}
 			break;
 		case "TOGGLE_CHECKED": {
@@ -75,17 +81,23 @@ public class Ajax extends HttpServlet {
 		}
 			break;
 		case "ADD_CART": {
-			response.setContentType("application/json");
-
-			int amount = Integer.parseInt(request.getParameter("amount"));
-			int productID = Integer.parseInt(request.getParameter("productID"));
-
-			CartModel cartItem = cartService.findSingle(userID, productID);
-			if (cartItem != null) {
-				int newQuantity = cartItem.getQuantity() + amount;
-				response.getWriter().write(cartService.updateQuantity(userID, productID, newQuantity, userName));
+			if (userID == 0) {
+				res.put("status", "ERROR");
+				res.put("message", "Not signed in!");
+				response.getWriter().write(res.toJSONString());
 			} else {
-				response.getWriter().write(cartService.insert(userID, productID, amount, userName));
+				response.setContentType("application/json");
+
+				int amount = Integer.parseInt(request.getParameter("amount"));
+				int productID = Integer.parseInt(request.getParameter("productID"));
+
+				CartModel cartItem = cartService.findSingle(userID, productID);
+				if (cartItem != null) {
+					int newQuantity = cartItem.getQuantity() + amount;
+					response.getWriter().write(cartService.updateQuantity(userID, productID, newQuantity, userName));
+				} else {
+					response.getWriter().write(cartService.insert(userID, productID, amount, userName));
+				}
 			}
 		}
 			break;

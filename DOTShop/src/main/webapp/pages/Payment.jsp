@@ -53,7 +53,7 @@
 					<div class="infor-wrapper">
 						<div class="heading-infor">
 							<span class="sub-title">Order</span>
-							<span class="link">Change</span>
+							<a href="<c:url value="/cart" />" class="link">Change</a>
 						</div>
 						<div>
 							<div class="in-row justify-content-between my-1">

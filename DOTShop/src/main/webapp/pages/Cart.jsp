@@ -164,7 +164,7 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<div class="btn btn-danger w-100" style="font-size: 14px;">Check out</div>
+										<div class="btn btn-danger w-100 payment-btn" style="font-size: 14px;">Check out</div>
 									</div>
 								</div>
 							</div>
