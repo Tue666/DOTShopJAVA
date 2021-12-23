@@ -11,6 +11,8 @@ public interface ICartService {
 	CartModel findSingle(int userID, int productID);
 	
 	List<CartItem> findCartByUserID(int userID);
+	
+	List<CartItem> findSelectedByUserID(int userID);
 
 	String insert(int userID, int productID, int quantity, String userName);
 	
