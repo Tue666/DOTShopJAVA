@@ -57,6 +57,7 @@
                 <ul class="treeview-menu">
                   <li><a href="<c:url value="/account" />"><i class="fa fa-angle-right"></i> Account</a></li>
                   <li><a href="<c:url value="/category" />"><i class="fa fa-angle-right"></i> Category</a></li>
+                  <li><a href="<c:url value="/order" />"><i class="fa fa-angle-right"></i> Order</a></li>
                 </ul>
               </li>
               
