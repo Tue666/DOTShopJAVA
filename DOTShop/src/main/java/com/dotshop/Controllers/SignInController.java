@@ -40,7 +40,8 @@ public class SignInController extends HttpServlet {
 		AccountModel acc = accountService.getInfosignIn(phone);
 		boolean signIn = accountService.signIn(phone, password);
 		String status = (String) acc.getStatus().toString();
-		System.out.print(status);
+		String hehe = "kaka";
+		System.out.print(hehe);
 
 		if(signIn) {
 				if(status.equals("Block")) {
