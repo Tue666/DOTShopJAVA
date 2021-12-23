@@ -16,34 +16,31 @@ public class OrderService implements IOrderService{
 	public OrderService() {
 		orderDAL = new OrderDAL();
 	}
-
+	//ADD
 	@Override
-	public String insertOrder(int id,int customerID,String customerName,String customerPhone, String customerAddress, String customerEmail, Date createdDay, String status) {
+	public String insertOrder(int id,int customerID,String customerName,String customerPhone, String customerAddress, String customerEmail, String createdDay, String status) {
 		JSONObject res = new JSONObject();
 		String message = "Insert Order failed because something went wrong!";
 		res.put("message",message);
 		return res.toJSONString();
 	}
-
-	@Override
-	public String removeOrder(int id) {
-		JSONObject res = new JSONObject();
-		String status = "ERROR";
-		String message = "Remove Order failed because something went wrong!";
-		int removed = orderDAL.removeOrder(id);
-		if (removed > 0) {
-			status = "SUCCESS";
-			message = "The Order has been deleted";
-		}
-		res.put("status", status);
-		res.put("message", message);
-		res.put("id", id);
-		return res.toJSONString();
-	}
-
-
 	@Override
 	public List<OrderModel> getOrder() {
 		return orderDAL.getOrder();
+	}
+
+	@Override
+	public int updateOrder(String customerName,String customerPhone, String customerAddress, String customerEmail, String createdDay, String status, int ID) {
+		return orderDAL.updateOrder(customerName, customerPhone, customerAddress, customerEmail, createdDay, status, ID);
+	}
+	@Override
+	public OrderModel findByID(int ID) {
+
+		return orderDAL.findByID(ID);
+	}
+
+	@Override
+	public int removeOrder(int ID) {
+		return orderDAL.removeOrder(ID);
 	}
 }

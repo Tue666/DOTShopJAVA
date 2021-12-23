@@ -16,7 +16,7 @@ public class OrderMapper implements IMapper<OrderModel>{
 			orderModel.setCustomerPhone(rs.getString("CustomerPhone"));
 			orderModel.setCustomerAddress(rs.getString("CustomerAddress"));
 			orderModel.setCustomerEmail(rs.getString("CustomerEmail"));
-			orderModel.setCreatedDay(rs.getDate("CreatedDay"));
+			orderModel.setCreatedDay(rs.getString("CreatedDay"));
 			orderModel.setStatus(rs.getString("Status"));
 			return orderModel;
 		} catch (SQLException e) {

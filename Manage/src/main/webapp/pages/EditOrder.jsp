@@ -20,11 +20,11 @@
 					</tr>
 					<tr>
 						<td><h4>Address</h4></td>
-						<td><input type="url" class="form-control" value="${order.getCustomerAddress() }" name="Address" required ></td>
+						<td><input type="text" class="form-control" value="${order.getCustomerAddress() }" name="Address" required ></td>
 					</tr>
 					<tr>
 						<td><h4>Email</h4></td>
-						<td><input type="text" class="form-control" value="${order.getCustomerEmail() }" name="Email" required ></td>
+						<td><input type="email" class="form-control" value="${order.getCustomerEmail() }" name="Email" required ></td>
 					</tr>
 					<tr>
 					<tr>
