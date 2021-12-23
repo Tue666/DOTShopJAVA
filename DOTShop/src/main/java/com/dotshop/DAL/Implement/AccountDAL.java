@@ -21,4 +21,28 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		return ExecuteUpdate(query,name, phone, gender, address, email, accountId);
 
 	}
+
+	@Override
+	public AccountModel signIn(String phone, String password) {
+		String query = "SELECT * FROM account WHERE phone = ? AND password =?";
+		return ExecuteOne(query,new AccountMapper(),phone,password);
+	}
+
+	@Override
+	public AccountModel getInfosignIn(String phone) {
+		String query = "SELECT * FROM account WHERE phone = ?";
+		return ExecuteOne(query,new AccountMapper(),phone);
+	}
+
+	@Override
+	public int signUp(String phone, String password, String confirmpassword, String role, String status) {
+		String query = "INSERT INTO account(phone, password, typeaccount, status) VALUES (?, ?, ?, ?) WHERE password =?";
+		return ExecuteInsert(query, phone, password, role, status, confirmpassword);
+	}
+
+	@Override
+	public AccountModel checkPhoneExisted(String phone) {
+		String query = "SELECT * FROM account WHERE phone = ?";
+		return ExecuteOne(query,new AccountMapper(),phone);
+	}
 }

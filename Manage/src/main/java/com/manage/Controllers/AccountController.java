@@ -2,6 +2,7 @@ package com.manage.Controllers;
 
 import java.io.IOException;
 
+import com.manage.Models.AccountModel;
 import com.manage.Service.IAccountService;
 import com.manage.Service.Implement.AccountService;
 
@@ -36,6 +37,9 @@ public class AccountController extends HttpServlet {
 			request.setAttribute("account",accountService.findByID(Integer.parseInt(id)));
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/EditAccount.jsp");
 			rd.forward(request, response);
+		}else if(path.contains("login")) {
+			RequestDispatcher rdlogin = request.getRequestDispatcher("/pages/Login.jsp");
+			rdlogin.forward(request, response);
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +47,7 @@ public class AccountController extends HttpServlet {
 		
 		String path = request.getPathInfo();
 		String phone = request.getParameter("Phone");
+		String password = request.getParameter("Password");
 		String name = request.getParameter("Name");
 		String gender = request.getParameter("Gender");
 		String address = request.getParameter("Address");
@@ -51,7 +56,6 @@ public class AccountController extends HttpServlet {
 		String status = request.getParameter("status");
 		
 		if (path != null) {
-			
 			String action = path.substring(1).split("/")[0];
 			String id = path.substring(1).split("/")[1];
 			int idaccount = Integer.parseInt(id);	
@@ -71,13 +75,29 @@ public class AccountController extends HttpServlet {
 				accountService.removeAccount(idaccount);
 				request.setAttribute("accounts", accountService.getAccount());
 				rd.forward(request, response);
+				break;			
+			case "login":
+				boolean login = accountService.signIn(phone, password);
+				AccountModel acc = accountService.getInfosignIn(phone, password);
+				if(login) {
+					request.getSession().setAttribute("name", acc.getName());
+					request.setAttribute("accounts", accountService.getAccount());
+					request.setAttribute("countAccounts",accountService.CountAccount());
+					request.setAttribute("countAdminAccounts",accountService.countAdminAccount());
+					request.setAttribute("countGuestAccounts",accountService.countGuestAccount());
+					RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Home.jsp");
+					rdhome.forward(request, response);
+				}else {
+					request.setAttribute("mess", "Wrong username or password");
+					RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Login.jsp");
+					rdhome.forward(request, response);
+				}
 				break;
 			default:
 				break;
 			}
 		}
 		else {
-			String password = request.getParameter("Password");
 			accountService.insertAccount(phone, password, name, gender, address, email,type,status);
 			request.setAttribute("accounts", accountService.getAccount());
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");

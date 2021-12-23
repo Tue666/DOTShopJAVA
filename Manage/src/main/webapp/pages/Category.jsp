@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8 "
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8 " pageEncoding="UTF-8"%>
 <%@ taglib prefix="l" tagdir="/WEB-INF/tags"%>
 <%@ include file="/common/taglib.jsp" %>
 
@@ -16,7 +15,6 @@
         		$('#table_id').DataTable();
     		} );
     	</script>
-		<div>
 		<h1 style="text-align: center;">Category Manager</h1>
 		<div class="table-reponsive mb-5">
 			<table class="table table-bordered"  width="50%" >
@@ -31,7 +29,9 @@
 					</tr>
 					<tr>
 						<td><h4>URL Image</h4></td>
-						<td><input type="url" class="form-control" placeholder="URL Image..." name="Image" required ></td>
+						<td>
+							<input type="url" class="form-control" placeholder="URL Image..." name="Image" required >
+						</td>
 					</tr>
 					<tr>
 						<td><h4>ParentID</h4></td>
@@ -43,7 +43,9 @@
 					</tr>
 					<tr>
 						<td><h4>URL Banner</h4></td>
-						<td><input type="url" class="form-control" placeholder="URL Banner..." name="Banner" ></td>
+						<td>
+							<input type="url" class="form-control" placeholder="URL Banner..." name="Banner" >
+						</td>
 					</tr>
 					
 					<tr>
@@ -132,14 +134,16 @@
 								</c:choose>
 			            	</td>
 			            	<td>
-								<c:choose>
-									<c:when test="${category.getStatus() != 'active'}">
-										<input type="button" class="btn btn-danger" id="" name="lock" value="Lock" >
-									</c:when>
-									<c:otherwise>
-										<input type="button" class="btn btn-success" id="" name="active" value="Active" >
-									</c:otherwise>
-								</c:choose>
+			            		<div>
+									<c:choose>
+										<c:when test="${category.getStatus() == 'active'}">
+											<a id="category-active" name="active" value="Active" style="color: green; font-weight: bold;">Active</a>
+										</c:when>
+										<c:otherwise>
+											<a id="category-lock" name="lock" value="Lock" style="color: red; font-weight: bold;">Lock</a>
+										</c:otherwise>
+									</c:choose>
+								</div>
 							</td>
 			            	<td>${category.getCreatedAt()}</td>
 			            	<td>${category.getCreatedBy()}</td>
