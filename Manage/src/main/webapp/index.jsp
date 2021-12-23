@@ -1,2 +1,2 @@
 <%@ include file="/common/taglib.jsp" %>
-<c:redirect url="/landing" />
+<c:redirect url="/account/login/" />

@@ -61,5 +61,39 @@ public class AccountService implements IAccountService  {
 		return accountDAL.checkPhoneExisted(phone) != null;
 	}
 
+
+	@Override
+	public int CountAccount() {
+		return accountDAL.CountAccount();
+	}
+
+
+	@Override
+	public int countAdminAccount() {
+		return accountDAL.countAdminAccount();
+	}
+
+
+	@Override
+	public int countGuestAccount() {
+		return accountDAL.countGuestAccount();
+	}
+
+
+	@Override
+	public Boolean signIn(String phone, String password) {
+		return accountDAL.signIn(phone, password) != null;
+	}
+
+
+	@Override
+	public AccountModel getInfosignIn(String phone, String password) {
+		return accountDAL.signIn(phone, password);
+	}
+
+
+	
+	
+
 	
 }

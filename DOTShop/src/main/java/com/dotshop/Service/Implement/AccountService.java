@@ -22,6 +22,24 @@ public class AccountService implements IAccountService {
 		return accountDAL.updateAccount(accountId, name, phone, gender, address, email) > 0;
 	}
 
-	
-	
+	@Override
+	public Boolean signIn(String phone, String password) {
+		return accountDAL.signIn(phone, password) != null;
+	}
+
+	@Override
+	public AccountModel getInfosignIn(String phone) {
+		return accountDAL.getInfosignIn(phone);
+	}
+
+	@Override
+	public int signUp(String phone, String password, String role, String status, String confirmpassword) {
+		return accountDAL.signUp(phone, password, role, status, confirmpassword);
+	}
+
+	@Override
+	public Boolean checkPhoneExisted(String phone) {
+		return accountDAL.checkPhoneExisted(phone) != null;
+	}
+
 }

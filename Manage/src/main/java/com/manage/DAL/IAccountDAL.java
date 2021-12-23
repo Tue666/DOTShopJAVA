@@ -19,4 +19,13 @@ public interface IAccountDAL {
 	AccountModel findByID(int id);
 	
 	int removeAccount (int id);
+	
+	int CountAccount();
+	
+	int countAdminAccount();
+	
+	int countGuestAccount();
+	
+	AccountModel signIn(String phone,String password);
+	
 }

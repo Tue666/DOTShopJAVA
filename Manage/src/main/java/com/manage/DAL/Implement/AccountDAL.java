@@ -45,4 +45,26 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		String query = "SELECT * FROM account WHERE phone = ?";
 		return ExecuteOne(query,new AccountMapper(),phone);
 	}
+	@Override
+	public int CountAccount() {
+		String query = "SELECT COUNT(id_account) FROM account";
+		return ExecuteSelected(query);
+	}
+	@Override
+	public int countAdminAccount() {
+		String query = "SELECT COUNT(Case typeaccount when 'Admin' then 1 else null end) FROM account";
+		return ExecuteSelected(query);
+	}
+	@Override
+	public int countGuestAccount() {
+		String query = "SELECT COUNT(Case typeaccount when 'Guest' then 1 else null end) FROM account";
+		return ExecuteSelected(query);
+	}
+	@Override
+	public AccountModel signIn(String phone, String password) {
+		String query = "SELECT * FROM account WHERE phone = ? AND password =? AND typeaccount = 'Admin' ";
+		return ExecuteOne(query,new AccountMapper(),phone,password);
+	}
+
+	
 }

@@ -8,10 +8,10 @@
 			<div class="col_3">
         	<div class="col-md-3 widget widget1">
         		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-dollar icon-rounded"></i>
+                    <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                     <div class="stats">
-                      <h5><strong>$452</strong></h5>
-                      <span>Total Revenue</span>
+                      <p>Total Users: <strong>${countAccounts}</strong></p>
+                      <p>( <strong>${countAdminAccounts }</strong> Admins - <strong>${countGuestAccounts }</strong> Guests )</p>
                     </div>
                 </div>
         	</div>
@@ -30,15 +30,6 @@
                     <div class="stats">
                       <h5><strong>$450</strong></h5>
                       <span>Expenditure</span>
-                    </div>
-                </div>
-        	 </div>
-        	<div class="col-md-3 widget">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>1450</strong></h5>
-                      <span>Total Users</span>
                     </div>
                 </div>
         	 </div>

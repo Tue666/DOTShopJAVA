@@ -20,4 +20,17 @@ public interface IAccountService {
 	AccountModel findByID(int id);
 	
 	int removeAccount (int id);
+	
+	int CountAccount();
+	
+	int countAdminAccount();
+	
+	int countGuestAccount();
+	
+	Boolean signIn(String phone,String password);
+	
+	AccountModel getInfosignIn(String phone,String password);
+	
+
+	
 }
