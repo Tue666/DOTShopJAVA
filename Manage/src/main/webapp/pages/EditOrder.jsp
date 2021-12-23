@@ -12,19 +12,19 @@
 				<form action=<c:url value="/order/edit/${order.getID()}"/> method="POST">
 					<tr>
 						<td><h4>Name</h4></td>
-						<td><input type="text" class="form-control" value="${order.getCustomerName() }" name="Name" required></td>
+						<td><input type="text" class="form-control" value="${order.getCustomerName() }" name="Name" disabled></td>
 					</tr>
 					<tr>
 						<td><h4>Phone</h4></td>
-						<td><input type="text" class="form-control" value="${order.getCustomerPhone() }" name="Phone" required></td>
+						<td><input type="text" class="form-control" value="${order.getCustomerPhone() }" name="Phone" disabled></td>
 					</tr>
 					<tr>
 						<td><h4>Address</h4></td>
-						<td><input type="text" class="form-control" value="${order.getCustomerAddress() }" name="Address" required ></td>
+						<td><input type="text" class="form-control" value="${order.getCustomerAddress() }" name="Address" disabled ></td>
 					</tr>
 					<tr>
 						<td><h4>Email</h4></td>
-						<td><input type="email" class="form-control" value="${order.getCustomerEmail() }" name="Email" required ></td>
+						<td><input type="email" class="form-control" value="${order.getCustomerEmail() }" name="Email" disabled ></td>
 					</tr>
 					<tr>
 					<tr>
@@ -38,6 +38,7 @@
 								name="DateCreatedat" 
 								id="" required autofocus autocomplete="nope"
 								title="Please press correct format. Example: 2021-11-25"
+								disabled
 							>
 						</td>
 					</tr>
@@ -45,16 +46,16 @@
 						<td><h4>Status</h4></td>
 						<td>
 							<c:choose>
-								<c:when test= "${order.getStatus() == 'active'}">
+								<c:when test= "${order.getStatus() == 'Accepted'}">
 									<select class="form-control" required name="Status">
-										<option value="active" selected>Active Order</option>
-										<option value="lock" >Lock Order</option>
+										<option value="Accepted" selected>Accepted</option>
+										<option value="Processing" >Processing</option>
 									</select>
 								</c:when>
 								<c:otherwise>
 									<select class="form-control" required name="Status">
-										<option value="lock" selected>Lock Order</option>
-										<option value="active" >Active Order</option>
+										<option value="Processing" selected>Processing</option>
+										<option value="Accepted" >Accepted</option>
 									</select>
 								</c:otherwise>
 							</c:choose>
@@ -62,7 +63,7 @@
 					</tr>
 				   	<tr>
 				   	 	<td colspan="2" align="right">
-				   	 		<input onclick="return confirm('Confirm Edit Order !!!')" type="submit" class="btn btn-primary btn-lg" name="" value="Edit Order">
+				   	 		<input type="submit" class="btn btn-primary btn-lg" name="" value="Edit Order">
 				   	 	</td>
 				  	</tr>
 	  			</form>

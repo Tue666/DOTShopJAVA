@@ -89,7 +89,7 @@
 		</div>
 		<div>		
 			<table id="table_id" class="display">
-			    <thead>
+			    <thead style="background-color: #163A5F; color: white">
 			        <tr>
 			        	<th>ID</th>
 			            <th>Title</th>

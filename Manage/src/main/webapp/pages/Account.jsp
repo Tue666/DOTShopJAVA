@@ -87,7 +87,7 @@
 </div>
 	<div>
 		<table id="table_id" class="table table-striped table-bordered display">
-		    <thead class="thead-dark">
+		    <thead class="thead-dark" style="background-color: #163A5F; color: white">
 		        <tr>
 		        	<th>ID</th>
 		        	<th>Phone</th>

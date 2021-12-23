@@ -17,7 +17,6 @@ public class OrderController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 
-	private IOrderService order;
 	private IOrderService orderService;
 	
 	public OrderController() {

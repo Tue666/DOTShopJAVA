@@ -5,14 +5,17 @@
 
 <l:MainLayout title="Order Detail | DOTShop - Administrator">
 	<jsp:body>
-		<a href="<c:url value="/order" />" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-		<a href="<c:url value="/order" />" class="btn btn-warning" data-abc="true"> <i class="fa fa-print"></i></i>  Print To PDF</a>
+		<h1 style="text-align: center;">Order Detail</h1>
+		<div style="text-align: right;">
+			<a href="<c:url value="/order" />" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+			<a href="<c:url value="#" />" class="btn btn-warning" data-abc="true"> <i class="fa fa-print"></i></i>  Print To PDF</a>
+		</div>
 		<div class="table-reponsive">
 			<table class="table table-bordered" >
 				<form action=<c:url value="/order/view/${order.getID()}"/> method="POST">
 					<tr>
 						<td><h4>Order ID</h4></td>
-						<td> ${order.getID() }</td>
+						<td>${order.getID() }</td>
 					</tr>
 					<tr>
 						<td><h4>Name</h4></td>
@@ -44,11 +47,11 @@
 						<td>
 		            		<div>
 								<c:choose>
-									<c:when test="${order.getStatus() == 'active'}">
-										<a id="category-active" name="active" value="Active" style="color: green; font-weight: bold;">Active</a>
+									<c:when test="${order.getStatus() == 'Accepted'}">
+										<a id="category-active" name="Accepted" value="Accepted" style="color: green; font-weight: bold;">Accepted</a>
 									</c:when>
 									<c:otherwise>
-										<a id="category-lock" name="lock" value="Lock" style="color: red; font-weight: bold;">Lock</a>
+										<a id="category-lock" name="Processing" value="Processing" style="color: red; font-weight: bold;">Processing</a>
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -56,36 +59,29 @@
 					</tr>
 	  			</form>
 			</table>
-			<div>
-				<hr>
-		            <ul class="row">
-		                <li class="col-md-4">
-		                    <figure class="itemside mb-3">
-		                        <div class="aside"><img width="16" height="16" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1571751108/Ecommerce/laptop-dell-xps-15-computer-monitors-laptops.jpg" class="img-sm border"></div>
-		                        <figcaption class="info align-self-center">
-		                            <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$950 </span>
-		                        </figcaption>
-		                    </figure>
-		                </li>
-		                <li class="col-md-4">
-		                    <figure class="itemside mb-3">
-		                        <div class="aside"><img width="16" height="16" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1571750967/Ecommerce/ef192a21ec96.jpg" class="img-sm border"></div>
-		                        <figcaption class="info align-self-center">
-		                            <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$850 </span>
-		                        </figcaption>
-		                    </figure>
-		                </li>
-		                <li class="col-md-4">
-		                    <figure class="itemside mb-3">
-		                        <div class="aside"><img width="16" height="16" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1571750722/Ecommerce/acer-v-17-nitro-realsense.jpg" class="img-sm border"></div>
-		                        <figcaption class="info align-self-center">
-		                            <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span class="text-muted">$650 </span>
-		                        </figcaption>
-		                    </figure>
-		                </li>
-		            </ul>
-	            <hr>
-            </div>
+			<h3 style="text-align: center;">List Product</h3>
+			<table id="table_id" class="table table-striped table-bordered display">
+			    <thead style="background-color: #163A5F; color: white">
+			        <tr>
+			        	<th>ID</th>
+			        	<th>Image</th>
+			            <th>Product Name</th>
+			            <th>Quantity</th>
+			            <th>Price</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	<c:forEach var="order" items="${orders}">
+			        	<tr>
+			            	<td>1</td>
+			            	<td>1</td>
+			            	<td>Nokia</td>
+			            	<td>100%</td>
+			            	<td>1 tỷ VND</td>
+			       		</tr>
+			        </c:forEach>
+			   	</tbody>
+		   	</table>
 		</div>
 	</jsp:body>
 </l:MainLayout> 
