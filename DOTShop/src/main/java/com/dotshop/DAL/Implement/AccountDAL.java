@@ -35,9 +35,9 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 	}
 
 	@Override
-	public int signUp(String phone, String password, String confirmpassword, String role, String status) {
-		String query = "INSERT INTO account(phone, password, typeaccount, status) VALUES (?, ?, ?, ?) WHERE password =?";
-		return ExecuteInsert(query, phone, password, role, status, confirmpassword);
+	public int signUp(String phone, String password, String role, String status) {
+		String query = "INSERT INTO account(phone, password, typeaccount, status) VALUES (?, ?, ?, ?)";
+		return ExecuteInsert(query, phone, password, role, status);
 	}
 
 	@Override

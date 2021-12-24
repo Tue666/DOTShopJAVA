@@ -33,13 +33,15 @@ public class AccountService implements IAccountService {
 	}
 
 	@Override
-	public int signUp(String phone, String password, String role, String status, String confirmpassword) {
-		return accountDAL.signUp(phone, password, role, status, confirmpassword);
+	public int signUp(String phone, String password, String role, String status) {
+		return accountDAL.signUp(phone, password, role, status);
 	}
-
 	@Override
 	public Boolean checkPhoneExisted(String phone) {
 		return accountDAL.checkPhoneExisted(phone) != null;
 	}
+
+
+
 
 }

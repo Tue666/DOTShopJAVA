@@ -1,4 +1,4 @@
-<%@ tag language="java" pageEncoding="ISO-8859-1"%>
+<%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ attribute name="title"%>
 <%@ include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
@@ -103,54 +103,51 @@
 	</script>
 	<!-- //requried-jsfiles-for owl -->
 </head>
-<body class="cbp-spmenu-push">
+<body >
 	<div class="main-content">
-	<!-- Content Start -->
-	<div id="page-wrapper">
-		<jsp:include page="/pages/Login.jsp" />
-	</div>
-	<!-- Content End -->
-	
-	<!-- Classie --><!-- for toggle left push menu script -->
-		<script src="<c:url value="/static/js/classie.js" />?v=0.0.1"></script>
-		<script>
-			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-				showLeftPush = document.getElementById( 'showLeftPush' ),
-				body = document.body;
+		<!-- Content Start -->
+		<div id="page-wrapper">
+			<jsp:doBody />
+		</div>
+		<!-- Content End -->
+		<!-- Classie --><!-- for toggle left push menu script -->
+			<script src="<c:url value="/static/js/classie.js" />?v=0.0.1"></script>
+			<script>
+				var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+					showLeftPush = document.getElementById( 'showLeftPush' ),
+					body = document.body;
+					
+				showLeftPush.onclick = function() {
+					classie.toggle( this, 'active' );
+					classie.toggle( body, 'cbp-spmenu-push-toright' );
+					classie.toggle( menuLeft, 'cbp-spmenu-open' );
+					disableOther( 'showLeftPush' );
+				};
 				
-			showLeftPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeftPush' );
-			};
-			
-
-			function disableOther( button ) {
-				if( button !== 'showLeftPush' ) {
-					classie.toggle( showLeftPush, 'disabled' );
+	
+				function disableOther( button ) {
+					if( button !== 'showLeftPush' ) {
+						classie.toggle( showLeftPush, 'disabled' );
+					}
 				}
-			}
-		</script>
-	<!-- //Classie --><!-- //for toggle left push menu script -->
-	
-	<!--scrolling js-->
-	<script src="<c:url value="/static/js/jquery.nicescroll.js" />?v=0.0.1"></script>
-	<script src="<c:url value="/static/js/scripts.js" />?v=0.0.1"></script>
-	<!--//scrolling js-->
-	
-	<!-- side nav js -->
-	<script src="<c:url value="/static/js/SidebarNav.min.js" />?v=0.0.1"></script>
-	<script>
-      $('.sidebar-menu').SidebarNav()
-    </script>
-	<!-- //side nav js -->
-	
-	<!-- Bootstrap Core JavaScript -->
-   	<script src="<c:url value="/static/js/bootstrap.js" />?v=0.0.1"></script>
-	<!-- //Bootstrap Core JavaScript -->
-	
+			</script>
+		<!-- //Classie --><!-- //for toggle left push menu script -->
+		
+		<!--scrolling js-->
+		<script src="<c:url value="/static/js/jquery.nicescroll.js" />?v=0.0.1"></script>
+		<script src="<c:url value="/static/js/scripts.js" />?v=0.0.1"></script>
+		<!--//scrolling js-->
+		
+		<!-- side nav js -->
+		<script src="<c:url value="/static/js/SidebarNav.min.js" />?v=0.0.1"></script>
+		<script>
+	      $('.sidebar-menu').SidebarNav()
+	    </script>
+		<!-- //side nav js -->
+		
+		<!-- Bootstrap Core JavaScript -->
+	   	<script src="<c:url value="/static/js/bootstrap.js" />?v=0.0.1"></script>
+		<!-- //Bootstrap Core JavaScript -->
 	</div>
-
 </body>
 </html>

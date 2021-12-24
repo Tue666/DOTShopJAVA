@@ -37,9 +37,9 @@ public class AccountService implements IAccountService  {
 
 
 	@Override
-	public int updateAccount(String phone, String name, String gender, String address, String email, String type,
+	public int updateAccount(String name, String gender, String address, String email, String type,
 			String status,int id) {
-		return accountDAL.updateAccount(phone, name, gender, address, email, type, status,id);
+		return accountDAL.updateAccount(name, gender, address, email, type, status,id);
 	}
 
 
@@ -51,8 +51,8 @@ public class AccountService implements IAccountService  {
 
 
 	@Override
-	public int updatePasswordto1(String password, int id) {
-		return accountDAL.updatePasswordto1(password,id);
+	public int updatePassword(String password, int id) {
+		return accountDAL.updatePassword(password,id);
 	}
 
 
@@ -87,8 +87,8 @@ public class AccountService implements IAccountService  {
 
 
 	@Override
-	public AccountModel getInfosignIn(String phone, String password) {
-		return accountDAL.signIn(phone, password);
+	public AccountModel getInfosignIn(String phone) {
+		return accountDAL.getInfosignIn(phone);
 	}
 
 

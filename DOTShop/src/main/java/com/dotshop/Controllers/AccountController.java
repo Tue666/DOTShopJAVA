@@ -44,27 +44,39 @@ public class AccountController extends HttpServlet {
 		// Lấy thông tin từ view
 		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
-		String confirmpassword = request.getParameter("confirmpassword");
-		String name = request.getParameter("name");
-		String gender = request.getParameter("gender");
-		String address = request.getParameter("address");
-		String email = request.getParameter("email");
-		String role = "Guest";
-		String status = "Active";
+		boolean isExisted = accountService.checkPhoneExisted(phone);
 		if (path != null) {
 			String action = path.substring(1).split("/")[0];
 			switch (action) {	
 			case "signUp":
-				accountService.signUp(phone, password, role, status,confirmpassword);
-				request.setAttribute("success", "Sign Up Success");
-				RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Login.jsp");
-				rdhome.forward(request, response);
+				if(isExisted) {
+					request.setAttribute("mess", "Phone is Existed");
+					RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Login.jsp");
+					rdhome.forward(request, response);
+				}
+				else {
+					String confirmpassword = request.getParameter("confirmpassword");
+					if(password.equals(confirmpassword)) {
+						accountService.signUp(phone, password, "Guest", "Active");
+						request.setAttribute("success", "Sign Up Success");
+						RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Login.jsp");
+						rdhome.forward(request, response);
+					}else {
+						request.setAttribute("warning", "Passwords are not the same");
+						RequestDispatcher rdhome = request.getRequestDispatcher("/pages/Login.jsp");
+						rdhome.forward(request, response);
+					}
+				}
 				break;
 			default:
 				break;
 			}
 		}
 		else {
+			String name = request.getParameter("name");
+			String gender = request.getParameter("gender");
+			String address = request.getParameter("address");
+			String email = request.getParameter("email");
 			// Gọi service xử lí 
 			int accountId = Integer.parseInt(request.getSession().getAttribute("id").toString());;
 			accountService.updateAccount(accountId, name, phone, gender, address, email);

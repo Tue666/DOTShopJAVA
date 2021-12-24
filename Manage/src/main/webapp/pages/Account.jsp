@@ -26,12 +26,16 @@
 					pattern="[0-9]{10}" 
 					title="Phone numbers cannot enter characters and must be 10 digits long. Example: 0906708888"
 					>
-					<span id="availability"></span>
+					<p style="margin-top:10px" id="availability"></p>
+					<p style="margin-top:10px" class="text-danger"><strong>${mess}</strong></p> 
 				</td>
 			</tr>
 			<tr>
 				<td><h4>Password</h4></td>
-				<td><input type="password" class="form-control" placeholder="Password..." name="Password" required></td>
+				<td><input type="password" class="form-control" placeholder="Password..." name="Password" required
+						pattern=".{6,}" 
+						title="Password at least 6 characters">
+				</td>
 			</tr>
 			<tr>
 				<td><h4>Name</h4></td>

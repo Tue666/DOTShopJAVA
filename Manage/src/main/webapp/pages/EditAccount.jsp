@@ -9,10 +9,6 @@
 		<div class="table-reponsive">
 			<table class="table table-bordered" >
 				<form action=<c:url value="/account/edit/${account.getID()}"/> method="POST">
-					<tr>
-	  					<td><h4>Phone</h4></td>
-	  					<td><input type="text" class="form-control" value="${account.getPhone() }" placeholder="Phone..." name="Phone" required></td>
-	  				</tr>
 	 				<tr>
 				    	<td><h4>Name</h4></td>
 				    	<td><input type="text" class="form-control" value="${account.getName() }" placeholder="Name..." name="Name" required ></td>
@@ -85,7 +81,7 @@
 					<tr>
 						<td colspan="2" align="right">
 							<div>		
-								<button onclick="return confirm('Are you sure to Reset this account Password ?')" type="submit" class="btn btn-primary" value="1" name="ResetPassword" title="Reset Password">
+								<button onclick="return confirm('Are you sure to Reset this account Password ?')" type="submit" class="btn btn-primary" value="123456" name="ResetPassword" title="Reset Password">
 									<div style="font-size: 20.2px;">
 										<i class="fa fa-key "></i>
 									</div>

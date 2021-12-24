@@ -20,9 +20,9 @@
 			            <div class="form-message form-text text-danger"></div>
 			        </div>
 			        <button type="submit" class="btn col-md-12 mt-4 shadow-none"><span>Sign in</span></button>
-			        <p class="text-danger"><strong>${mess}</strong></p>
-			        <p class="text-success"><strong>${success}</strong></p>
-			        <p class="text-warning"><strong>${warning}</strong></p>
+			        <p class="text-danger mt-2"><strong>${mess}</strong></p>
+			        <p class="text-success mt-2"><strong>${success}</strong></p>
+			        <p class="text-warning mt-2"><strong>${warning}</strong></p>
 			        <div class="form-text d-flex justify-content-center align-item-center">
 			            Have no account?
 			            <a class="btn-toggle" href="#" style="margin-left:5px;">Sign up</a>
@@ -34,12 +34,18 @@
 			        </div>
 			        <div class="form-group">
 			            <label for="register-user-name" class="form-label" id="myphone">Phone</label>
-			            <input type="text" name="phone" rules="required" class="form-control shadow-none" id="myphone">
+			            <input type="text" name="phone" rules="required" class="form-control shadow-none" id="register-phone"
+			            	pattern="[0-9]{10}" 
+							title="Phone numbers cannot enter characters and must be 10 digits long. Example: 0906708888"
+			            >
 			            <div class="form-message form-text text-danger"></div>
 			        </div>
 			        <div class="form-group">
 			            <label for="register-password" class="form-label">Password</label>
-			            <input type="password" name="password" rules="required|minLength:6" class="form-control shadow-none" id="register-password">
+			            <input type="password" name="password" rules="required|minLength:6" class="form-control shadow-none" id="register-password"
+			            	pattern=".{6,}" 
+							title="Password at least 6 characters"     
+			            >
 			            <div class="form-message form-text text-danger"></div>
 			        </div>
 			        <div class="form-group">

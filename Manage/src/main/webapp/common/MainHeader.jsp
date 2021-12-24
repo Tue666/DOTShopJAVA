@@ -85,7 +85,7 @@
 								<div class="profile_img">	
 									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
 									<div class="user-name">
-										<p>Admin Name</p>
+										<p>${phone}</p>
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>
@@ -97,7 +97,7 @@
 								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li> 
 								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+								<li> <a href="<c:url value="/signOut" />"/><i class="fa fa-sign-out"></i> Sign Out</a> </li>
 							</ul>
 						</li>
 					</ul>

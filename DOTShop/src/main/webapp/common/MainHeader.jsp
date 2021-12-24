@@ -40,7 +40,7 @@
 						            <li><a href="<c:url value="/account" />">Edit Infomation</a></li>
 						            <c:choose>
 						            	<c:when test="${role == 'Admin' }">
-						            	 	<li><a href="<c:url value="http://localhost:9080/Manage/landing" />">Go to Manager</a></li>
+						            	 	<li><a href="<c:url value="http://localhost:9080/Manage/signIn" />">Go to Manager</a></li>
 						            	</c:when>
 						            </c:choose>
 						            <li><a href="<c:url value="/signOut" />"/>Sign Out</a></li>

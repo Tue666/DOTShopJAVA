@@ -11,9 +11,9 @@ public interface IAccountService {
 	
 	int insertAccount(String phone,String pass,String name, String gender, String address,String email,String type,String status);
 	
-	int updateAccount(String phone,String name, String gender, String address,String email,String type,String status,int id);
+	int updateAccount(String name, String gender, String address,String email,String type,String status,int id);
 	
-	int updatePasswordto1(String password,int id);
+	int updatePassword(String password,int id);
 	
 	Boolean checkPhoneExisted(String phone);
 	
@@ -29,7 +29,7 @@ public interface IAccountService {
 	
 	Boolean signIn(String phone,String password);
 	
-	AccountModel getInfosignIn(String phone,String password);
+	AccountModel getInfosignIn(String phone);
 	
 
 	

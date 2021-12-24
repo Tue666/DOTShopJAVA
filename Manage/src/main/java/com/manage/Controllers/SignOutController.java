@@ -1,4 +1,4 @@
-package com.dotshop.Controllers;
+package com.manage.Controllers;
 
 import java.io.IOException;
 
@@ -17,8 +17,7 @@ public class SignOutController extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("id");
 		session.removeAttribute("phone");
-		session.removeAttribute("role");
 		session.invalidate();
-		response.sendRedirect(request.getContextPath() + "/landing");
+		response.sendRedirect(request.getContextPath() + "/signIn");
 	}
 }

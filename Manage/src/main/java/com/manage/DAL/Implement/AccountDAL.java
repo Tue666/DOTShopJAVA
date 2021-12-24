@@ -20,9 +20,9 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		return ExecuteInsert(query, phone, pass, name, gender, address,email,type,status);
 	}
 	
-	public int updateAccount(String phone,String name, String gender, String address,String email,String type,String status,int id) {
-		String query = "UPDATE account SET phone = ?, name = ?, gender = ?, address = ?, email = ?, typeaccount = ?, status = ? WHERE id_account = ? ";
-		return ExecuteUpdate(query,phone, name, gender, address,email,type,status,id);
+	public int updateAccount(String name, String gender, String address,String email,String type,String status,int id) {
+		String query = "UPDATE account SET name = ?, gender = ?, address = ?, email = ?, typeaccount = ?, status = ? WHERE id_account = ? ";
+		return ExecuteUpdate(query, name, gender, address,email,type,status,id);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 		return ExecuteOne(query, new AccountMapper(), id);
 	}
 	@Override
-	public int updatePasswordto1(String password, int id) {
+	public int updatePassword(String password, int id) {
 		String query = "Update account Set password = ? WHERE id_account = ? ";
 		return ExecuteUpdate(query,password,id);
 	}
@@ -62,8 +62,13 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 	}
 	@Override
 	public AccountModel signIn(String phone, String password) {
-		String query = "SELECT * FROM account WHERE phone = ? AND password =? AND typeaccount = 'Admin' ";
+		String query = "SELECT * FROM account WHERE phone = ? AND password = ? ";
 		return ExecuteOne(query,new AccountMapper(),phone,password);
+	}
+	@Override
+	public AccountModel getInfosignIn(String phone) {
+		String query = "SELECT * FROM account WHERE phone = ?";
+		return ExecuteOne(query,new AccountMapper(),phone);
 	}
 
 	

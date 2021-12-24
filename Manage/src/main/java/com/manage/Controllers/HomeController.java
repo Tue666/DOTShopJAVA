@@ -25,10 +25,16 @@ public class HomeController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("countAccounts",accountService.CountAccount());
-		request.setAttribute("countAdminAccounts",accountService.countAdminAccount());
-		request.setAttribute("countGuestAccounts",accountService.countGuestAccount());
-		RequestDispatcher rd = request.getRequestDispatcher("/pages/Home.jsp");
-		rd.forward(request, response);
+		if(request.getSession().getAttribute("id") == null) {
+			response.sendRedirect(request.getContextPath() + "/signIn");
+		}
+		else {
+			request.setAttribute("countAccounts",accountService.CountAccount());
+			request.setAttribute("countAdminAccounts",accountService.countAdminAccount());
+			request.setAttribute("countGuestAccounts",accountService.countGuestAccount());
+			RequestDispatcher rd = request.getRequestDispatcher("/pages/Home.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 }

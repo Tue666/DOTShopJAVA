@@ -12,7 +12,7 @@ public interface IAccountDAL {
 	
 	AccountModel getInfosignIn(String phone);
 	
-	int signUp(String phone, String password, String confirmpassword, String role, String status);
+	int signUp(String phone, String password, String role, String status);
 	
 	AccountModel checkPhoneExisted(String phone);
 		

@@ -12,7 +12,7 @@ public interface IAccountService {
 	
 	AccountModel getInfosignIn(String phone);
 	
-	int signUp(String phone, String password, String role, String status, String confirmpassword);
+	int signUp(String phone, String password, String role, String status);
 	
 	Boolean checkPhoneExisted(String phone);
 }
