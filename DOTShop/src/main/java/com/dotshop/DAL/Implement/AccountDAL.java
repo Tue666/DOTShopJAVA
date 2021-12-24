@@ -15,10 +15,10 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 	}
 
 	@Override
-	public int updateAccount(int accountId, String name, String phone, String gender, String address, String email) {
+	public int updateAccount(int accountId, String name, String gender, String address, String email) {
 
-		String query = "UPDATE account SET name = ?, phone = ?, gender = ?, address = ?, email = ? WHERE id_account = ? ";
-		return ExecuteUpdate(query,name, phone, gender, address, email, accountId);
+		String query = "UPDATE account SET name = ?, gender = ?, address = ?, email = ? WHERE id_account = ? ";
+		return ExecuteUpdate(query,name, gender, address, email, accountId);
 
 	}
 
@@ -44,5 +44,17 @@ public class AccountDAL extends AbstractDAL implements IAccountDAL {
 	public AccountModel checkPhoneExisted(String phone) {
 		String query = "SELECT * FROM account WHERE phone = ?";
 		return ExecuteOne(query,new AccountMapper(),phone);
+	}
+
+	@Override
+	public AccountModel checkOldPassword(String oldpassword, int accountId) {
+		String query = "SELECT * FROM account WHERE password = ? AND id_account = ? ";
+		return ExecuteOne(query,new AccountMapper(), oldpassword, accountId);
+	}
+
+	@Override
+	public int changePassword(String password, int accountId) {
+		String query = "UPDATE account SET password = ? WHERE id_account = ? ";
+		return ExecuteUpdate(query, password, accountId);
 	}
 }

@@ -6,7 +6,7 @@ public interface IAccountDAL {
 	
 	AccountModel findById(int accountId);
 	
-	int updateAccount(int accountId, String name, String phone, String gender, String address, String email);
+	int updateAccount(int accountId, String name, String gender, String address, String email);
 	
 	AccountModel signIn(String phone,String password);
 	
@@ -15,5 +15,9 @@ public interface IAccountDAL {
 	int signUp(String phone, String password, String role, String status);
 	
 	AccountModel checkPhoneExisted(String phone);
+	
+	AccountModel checkOldPassword (String oldpassword,int accountId);
+	
+	int changePassword(String password, int accountId);
 		
 }

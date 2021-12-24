@@ -18,8 +18,8 @@ public class AccountService implements IAccountService {
 	}
 
 	@Override
-	public Boolean updateAccount(int accountId, String name, String phone, String gender, String address, String email) {
-		return accountDAL.updateAccount(accountId, name, phone, gender, address, email) > 0;
+	public Boolean updateAccount(int accountId, String name, String gender, String address, String email) {
+		return accountDAL.updateAccount(accountId, name, gender, address, email) > 0;
 	}
 
 	@Override
@@ -40,6 +40,18 @@ public class AccountService implements IAccountService {
 	public Boolean checkPhoneExisted(String phone) {
 		return accountDAL.checkPhoneExisted(phone) != null;
 	}
+
+	@Override
+	public Boolean checkOldPassword(String oldpassword, int accountId) {
+		return accountDAL.checkOldPassword(oldpassword, accountId) != null;
+	}
+	
+	@Override
+	public int changePassword(String password, int accountId) {
+		return accountDAL.changePassword(password, accountId);
+	}
+
+
 
 
 

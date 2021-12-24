@@ -5,45 +5,47 @@
 	<!-- Header Top Start -->
 	<div class="in-row justify-content-between">
 		<div class="in-row">
-			<div class="nav-child">
+			<div class="nav-child father">
 				<a href="#"><i class="bi bi-file-arrow-down"></i> Download app</a>
 			</div>
-			<div class="nav-child">
+			<div class="nav-child father ">
 				<a href="#"><i class="bi bi-code-slash"></i> Connect</a>
 			</div>
 		</div>
 		<div class="in-row">
-			<div class="nav-child">
+			<div class="nav-child father">
 				<a href="#"><i class="bi bi-bell"></i> Notifications</a>
 			</div>
-			<div class="nav-child">
+			<div class="nav-child father">
 				<a href="#"><i class="bi bi-question-circle"></i> Support</a>
 			</div>
 			<div class="nav-child">
 				<c:choose>
 					<c:when test= "${empty id}">
-						<a href="<c:url value="/signIn" />"/>Sign In</a>
+						<a class="themgachchan" href="<c:url value="/signIn" />"/>Sign In</a>
 					</c:when>
 					<c:otherwise>
-						<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<nav class="navbar navbar-expand-lg">
 						  <div class="container-fluid">
 						    <a class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						      <span class="navbar-toggler-icon"></span>
 						    </a>
 						    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 						      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						        <li class="nav dropdown">
-						          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						        <li class="nav dropdown mt-1 bogachchan">
+						          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-bs-toggle="dropdown" aria-expanded="false">
 						           	${phone}
 						          </a>
 						          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						            <li><a href="<c:url value="/account" />">Edit Infomation</a></li>
+						            <li><a class="themmau" href="<c:url value="/account" />">Edit Information</a></li>
+						            <li><a class="themmau" href="<c:url value="/account/changePassword" />">Change Password</a></li>
 						            <c:choose>
 						            	<c:when test="${role == 'Admin' }">
-						            	 	<li><a href="<c:url value="http://localhost:9080/Manage/signIn" />">Go to Manager</a></li>
+						            	 	<li><a class="themmau" href="<c:url value="http://localhost:9080/Manage/signIn" />">Go to Manager</a></li>
 						            	</c:when>
 						            </c:choose>
-						            <li><a href="<c:url value="/signOut" />"/>Sign Out</a></li>
+						            <li><hr class="dropdown-divider"></li>
+						            <li><a class="themmau" href="<c:url value="/signOut" />"/>Sign Out</a></li>
 						          </ul>
 						        </li>
 						      </ul>

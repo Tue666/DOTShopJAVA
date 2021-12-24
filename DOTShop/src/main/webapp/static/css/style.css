@@ -247,9 +247,20 @@ a {
     font-size: 13px;
     border-bottom: 1px solid transparent;
 }
-.nav-child:hover a {
+.father:hover a {
 	color: var(--color-red-main);
     border-bottom: 1px solid var(--color-red-main);
+}
+.bogachchan:hover > a{
+	color: var(--color-red-main);
+	 border-bottom: 1px solid var(--color-red-main);
+}
+.themgachchan:hover {
+	color: var(--color-red-main);
+    border-bottom: 1px solid var(--color-red-main);
+}
+.themmau:hover {
+	color: var(--color-red-main);
 }
 .logo {
 	width: 106px;

@@ -34,7 +34,7 @@
 			        </div>
 			        <div class="form-group">
 			            <label for="register-user-name" class="form-label" id="myphone">Phone</label>
-			            <input type="text" name="phone" rules="required" class="form-control shadow-none" id="register-phone" required
+			            <input type="text" name="phone" rules="required" class="form-control shadow-none" id="register-phone"
 			            	pattern="[0-9]{10}" 
 							title="Phone numbers cannot enter characters and must be 10 digits long. Example: 0906708888"
 			            >
@@ -42,7 +42,7 @@
 			        </div>
 			        <div class="form-group">
 			            <label for="register-password" class="form-label">Password</label>
-			            <input required type="password" name="password" rules="required|minLength:6" class="form-control shadow-none" id="register-password"
+			            <input type="password" name="password" rules="required|minLength:6" class="form-control shadow-none" id="register-password"
 			            	pattern=".{6,}" 
 							title="Password at least 6 characters"     
 			            >

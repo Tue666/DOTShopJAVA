@@ -261,6 +261,7 @@ addCartBtn && addCartBtn.addEventListener('click', () => {
 	})
 		.then(res => JSON.parse(res))
 		.then(res => {
+			console.log(res);
 			showToast(res.status === 'SUCCESS' ? 'Successfully!' : 'Failure!', res.message, res.status, res.status === 'SUCCESS' ? 'top-right' : 'bottom-center');
 			if (res.totalRecords) {
 				toggleBadge(res.totalRecords);

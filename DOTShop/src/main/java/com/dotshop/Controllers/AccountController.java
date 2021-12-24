@@ -35,6 +35,16 @@ public class AccountController extends HttpServlet {
 		}else if (path.contains("signUp")) {
 			response.sendRedirect(request.getContextPath() + "/signIn");
 		}
+		else if (path.contains("changePassword")) {
+			if(request.getSession().getAttribute("id") == null) {
+				response.sendRedirect(request.getContextPath() + "/signIn");
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("/pages/ChangePassword.jsp");
+				rd.forward(request, response);
+			}
+			
+		}
 		
 	}
 
@@ -68,6 +78,29 @@ public class AccountController extends HttpServlet {
 					}
 				}
 				break;
+			case "changePassword":
+				String oldpassword = request.getParameter("oldpassword");
+				int accountId = Integer.parseInt(request.getSession().getAttribute("id").toString());
+				boolean Checkpassword = accountService.checkOldPassword(oldpassword, accountId);
+					if(Checkpassword) {
+						String confirmpassword = request.getParameter("confirmpassword");
+						if(password.equals(confirmpassword)) {
+							accountService.changePassword(password, accountId);
+							request.setAttribute("success", "Change Password success");
+							RequestDispatcher rdhome = request.getRequestDispatcher("/pages/ChangePassword.jsp");
+							rdhome.forward(request, response);
+						}else {
+							request.setAttribute("mess", "Passwords are not the same");
+							RequestDispatcher rdhome = request.getRequestDispatcher("/pages/ChangePassword.jsp");
+							rdhome.forward(request, response);
+						}
+					}else {
+						request.setAttribute("mess", "Old password is not correct");
+						RequestDispatcher rdhome = request.getRequestDispatcher("/pages/ChangePassword.jsp");
+						rdhome.forward(request, response);
+					}
+					
+				break;
 			default:
 				break;
 			}
@@ -79,7 +112,7 @@ public class AccountController extends HttpServlet {
 			String email = request.getParameter("email");
 			// Gọi service xử lí 
 			int accountId = Integer.parseInt(request.getSession().getAttribute("id").toString());;
-			accountService.updateAccount(accountId, name, phone, gender, address, email);
+			accountService.updateAccount(accountId, name, gender, address, email);
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/Account.jsp");
 			rd.forward(request, response);
 		}
