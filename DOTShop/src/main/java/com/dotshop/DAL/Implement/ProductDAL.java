@@ -44,4 +44,16 @@ public class ProductDAL extends AbstractDAL implements IProductDAL {
 		String query = "SELECT * FROM product WHERE Slug = ? AND Status = ? LIMIT 1";
 		return ExecuteOne(query, new ProductMapper(), slug, "active");
 	}
+
+	@Override
+	public int updateQuantityByAmount(int productID, int amount, String type) {
+		String query = "";
+		if (type == "DESC") {
+			query = "UPDATE product SET Quantity = Quantity - ? WHERE ID = ?";
+		}
+		else {
+			query = "UPDATE product SET Quantity = Quantity + ? WHERE ID = ?";
+		}
+		return ExecuteUpdate(query, amount, productID);
+	}
 }

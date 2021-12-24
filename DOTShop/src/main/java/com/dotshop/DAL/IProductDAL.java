@@ -14,4 +14,6 @@ public interface IProductDAL {
 	ProductModel findByID(int productID);
 	
 	ProductModel findBySlug(String slug);
+	
+	int updateQuantityByAmount(int productID, int amount, String type);
 }

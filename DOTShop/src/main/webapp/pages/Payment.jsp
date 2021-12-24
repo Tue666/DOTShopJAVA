@@ -36,8 +36,11 @@
 							</c:forEach>
 						</div>
 					</div>
-					<div class="order-btn">
-					 	ORDER
+					<div>
+						<div class="order-btn">
+						 	ORDER
+						</div>
+						<span class="caption">(Check the cart and the <strong>necessary information</strong> to place an order)</span>
 					</div>
 				</div>
 				<div class="checkout-infor">

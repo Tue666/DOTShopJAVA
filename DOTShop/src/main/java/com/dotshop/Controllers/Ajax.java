@@ -9,8 +9,10 @@ import org.json.simple.JSONValue;
 import com.dotshop.Models.CartModel;
 import com.dotshop.Models.ProductModel;
 import com.dotshop.Service.ICartService;
+import com.dotshop.Service.IPaymentService;
 import com.dotshop.Service.IProductSevice;
 import com.dotshop.Service.Implement.CartService;
+import com.dotshop.Service.Implement.PaymentService;
 import com.dotshop.Service.Implement.ProductService;
 import com.google.gson.Gson;
 
@@ -26,10 +28,12 @@ public class Ajax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IProductSevice productService;
 	private ICartService cartService;
+	private IPaymentService paymentService;
 
 	public Ajax() {
 		productService = new ProductService();
 		cartService = new CartService();
+		paymentService = new PaymentService();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -107,6 +111,11 @@ public class Ajax extends HttpServlet {
 			int productID = Integer.parseInt(request.getParameter("productID"));
 
 			response.getWriter().write(cartService.remove(userID, productID));
+		}
+		case "ORDER": {
+			response.setContentType("application/json");
+			
+			response.getWriter().write(paymentService.order(userID));
 		}
 		default:
 			break;

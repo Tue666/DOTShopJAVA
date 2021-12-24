@@ -261,7 +261,10 @@ addCartBtn && addCartBtn.addEventListener('click', () => {
 	})
 		.then(res => JSON.parse(res))
 		.then(res => {
-			console.log(res);
+			if (res.status === 'ERROR' && res.message === 'Not signed in!') {
+				window.location.href = appName + '/signIn';
+				return;
+			}
 			showToast(res.status === 'SUCCESS' ? 'Successfully!' : 'Failure!', res.message, res.status, res.status === 'SUCCESS' ? 'top-right' : 'bottom-center');
 			if (res.totalRecords) {
 				toggleBadge(res.totalRecords);
@@ -312,4 +315,24 @@ removeCartButtons && removeCartButtons.forEach(item => {
 		const productID = item.closest('div[data-item]').getAttribute('data-item');
 		removeCart(productID);
 	})
+});
+
+// Order
+const orderBtn = document.querySelector('.order-btn');
+orderBtn && orderBtn.addEventListener('click', () => {
+	swalAjax('Order now', 'Check the cart and the necessary information to order', 'info', false, 'Order has stopped!')
+		.then(() => xhrCall('POST', {
+			action: 'ORDER'
+		}))
+		.then(res => JSON.parse(res))
+		.then(json => {
+			if (json.statusCode === 401) {
+				window.location.href = appName + '/signIn';
+			} else if (json.statusCode === 403) {
+				window.location.href = appName + '/cart';
+			} else {
+				swal('Successfully!', json.message, 'success')
+					.then(() => window.location.href = appName)
+			}
+		})
 });

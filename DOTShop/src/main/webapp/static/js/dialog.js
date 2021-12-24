@@ -1,4 +1,4 @@
-const swalAjax = (title = '', content = '', icon = '', danger = false) => {
+const swalAjax = (title = '', content = '', icon = '', danger = false, messageCanceled = 'Got away safely!') => {
 	return new Promise(resolve => {
 		swal({
 			title: title,
@@ -25,7 +25,7 @@ const swalAjax = (title = '', content = '', icon = '', danger = false) => {
 					resolve();
 				}
 				else {
-					swal("Got away safely!");
+					swal(messageCanceled);
 				}
 			})
 	});
