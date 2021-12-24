@@ -1,8 +1,12 @@
 package com.manage.Controllers;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.manage.Models.OrderItem;
+import com.manage.Service.IOrderDetailService;
 import com.manage.Service.IOrderService;
+import com.manage.Service.Implement.OrderDetailService;
 import com.manage.Service.Implement.OrderService;
 
 import jakarta.servlet.RequestDispatcher;
@@ -18,9 +22,11 @@ public class OrderController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	private IOrderService orderService;
+	private IOrderDetailService orderDetailService;
 	
 	public OrderController() {
 		orderService = new OrderService();
+		orderDetailService = new OrderDetailService();
 	}
 	//Get DataTable
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,8 +48,12 @@ public class OrderController extends HttpServlet{
 				rd.forward(request, response);
 			}
 			else if (path.contains("view")) {
-				String id = path.substring(1).split("/")[1];
-				request.setAttribute("order",orderService.findByID(Integer.parseInt(id)));
+				int id = Integer.parseInt(path.substring(1).split("/")[1]);
+				List<OrderItem> ordered = orderDetailService.findAllOrdered(id);
+				int totalPrice = ordered.stream().reduce(0, (sum, item) -> sum + item.getOrderPrice(), Integer::sum);
+				request.setAttribute("order", orderService.findByID(id));
+				request.setAttribute("ordered", ordered);
+				request.setAttribute("totalPrice", totalPrice);
 				RequestDispatcher rd = request.getRequestDispatcher("/pages/OrderDetail.jsp");
 				rd.forward(request, response);
 			}

@@ -40,7 +40,7 @@
 					</tr>
 					<tr>
 						<td><h4>Total price</h4></td>
-						<td>XXX.XXX.XXX VND</td>
+						<td>${totalPrice} VND</td>
 					</tr>
 					<tr>
 						<td><h4>Status</h4></td>
@@ -71,14 +71,19 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	<c:forEach var="order" items="${orders}">
+			    	<c:forEach var="order" items="${ordered}">
 			        	<tr>
-			        		<p>Chi tiết sản phẩm nha hehe</p>
-			            	<td>1</td>
-			            	<td>1</td>
-			            	<td>Nokia</td>
-			            	<td>100%</td>
-			            	<td>1 tỷ VND</td>
+			            	<td>${order.getProductID()}</td>
+			            	<td>
+			            		<img
+			            			alt="${order.getProductName()}"
+			            			src="${order.getProductImage()}"
+			            			style="width: 50px; height: 50px; object-fit: cover"
+			            		/>
+			            	</td>
+			            	<td>${order.getProductName()}</td>
+			            	<td>${order.getOrderQuantity()}</td>
+			            	<td>${order.getOrderPrice()} VND</td>
 			       		</tr>
 			        </c:forEach>
 			   	</tbody>
