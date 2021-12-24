@@ -9,7 +9,7 @@ public class OrderModel {
 	private String CustomerPhone;
 	private String CustomerAddress;
 	private String CustomerEmail;
-	private String CreatedDay;
+	private String CreatedAt;
 	private String Status;
 	public int getID() {
 		return ID;
@@ -47,11 +47,11 @@ public class OrderModel {
 	public void setCustomerEmail(String customerEmail) {
 		CustomerEmail = customerEmail;
 	}
-	public String getCreatedDay() {
-		return CreatedDay;
+	public String getCreatedAt() {
+		return CreatedAt;
 	}
-	public void setCreatedDay(String createdDay) {
-		CreatedDay = createdDay;
+	public void setCreatedAt(String createdAt) {
+		CreatedAt = createdAt;
 	}
 	public String getStatus() {
 		return Status;

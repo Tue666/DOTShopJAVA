@@ -24,17 +24,22 @@ public class CategoryController extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = request.getPathInfo();
-		if (path == null) {
-			request.setAttribute("categories", categoryService.getCategory());
-			RequestDispatcher rd = request.getRequestDispatcher("/pages/Category.jsp");
-			rd.forward(request, response);
+		if(request.getSession().getAttribute("id") == null) {
+			response.sendRedirect(request.getContextPath() + "/signIn");
 		}
-		else if (path.contains("edit")) {
-			String id = path.substring(1).split("/")[1];
-			request.setAttribute("category",categoryService.findByID(Integer.parseInt(id)));
-			RequestDispatcher rd = request.getRequestDispatcher("/pages/EditCategory.jsp");
-			rd.forward(request, response);
+		else {
+			String path = request.getPathInfo();
+			if (path == null) {
+				request.setAttribute("categories", categoryService.getCategory());
+				RequestDispatcher rd = request.getRequestDispatcher("/pages/Category.jsp");
+				rd.forward(request, response);
+			}
+			else if (path.contains("edit")) {
+				String id = path.substring(1).split("/")[1];
+				request.setAttribute("category",categoryService.findByID(Integer.parseInt(id)));
+				RequestDispatcher rd = request.getRequestDispatcher("/pages/EditCategory.jsp");
+				rd.forward(request, response);
+			}
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -59,13 +64,11 @@ public class CategoryController extends HttpServlet{
 				String createdby = request.getParameter("Createdby");
 
 				categoryService.updateCategory(title, slug, image, parentID, displayorder, banner,status,createdat,createdby,createdat,"Not updated yet", idcategory);
-				request.setAttribute("categories", categoryService.getCategory());
-				rd.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/category");
 				break;
 			case "remove":
 				categoryService.removeCategory(idcategory);
-				request.setAttribute("categories", categoryService.getCategory());
-				rd.forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/category");
 				break;
 			default:
 				break;

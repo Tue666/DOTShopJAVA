@@ -41,7 +41,7 @@
 						            <li><a class="themmau" href="<c:url value="/account/changePassword" />">Change Password</a></li>
 						            <c:choose>
 						            	<c:when test="${role == 'Admin' }">
-						            	 	<li><a class="themmau" href="<c:url value="http://localhost:9080/Manage/signIn" />">Go to Manager</a></li>
+						            	 	<li><a class="themmau" href="<c:url value="http://localhost:8080/Manage/signIn" />">Go to Manager</a></li>
 						            	</c:when>
 						            </c:choose>
 						            <li><hr class="dropdown-divider"></li>

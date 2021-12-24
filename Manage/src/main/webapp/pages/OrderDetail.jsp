@@ -35,8 +35,8 @@
 					</tr>
 					<tr>
 					<tr>
-						<td><h4>Created Day</h4></td>
-						<td>${order.getCreatedDay() }</td>
+						<td><h4>Created At</h4></td>
+						<td>${order.getCreatedAt() }</td>
 					</tr>
 					<tr>
 						<td><h4>Total price</h4></td>
@@ -73,6 +73,7 @@
 			    <tbody>
 			    	<c:forEach var="order" items="${orders}">
 			        	<tr>
+			        		<p>Chi tiết sản phẩm nha hehe</p>
 			            	<td>1</td>
 			            	<td>1</td>
 			            	<td>Nokia</td>

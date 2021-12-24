@@ -25,7 +25,7 @@
 			            <th>Phone</th>
 			            <th>Address</th>
 			            <th>Email</th>
-			            <th>CreatedDay</th>
+			            <th>CreatedAt</th>
 			            <th>Status</th>
 			            <th>Manager</th>
 			        </tr>
@@ -38,7 +38,7 @@
 			            	<td>${order.getCustomerPhone()}</td>
 			            	<td>${order.getCustomerAddress()}</td>
 			            	<td>${order.getCustomerEmail()}</td>
-			            	<td>${order.getCreatedDay()}</td>
+			            	<td>${order.getCreatedAt()}</td>
 			            	<td>
 			            		<div>
 									<c:choose>
@@ -52,22 +52,24 @@
 								</div>
 							</td>
 			            	<td>
+			            		<div style="display:inline-flex">
 			            		<a href="<c:url value="/order/view/${order.getID()}" />">
-			            			<button class="btn btn-light" style="margin-right:10px" title="View order">
+			            			<button class="btn btn-light" style="margin-right:10px" title="View order" >
 					            		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
 											<path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
 											<path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
 										</svg>
 									</button>
-								</a>	 
-					            <a href="<c:url value="/order/edit/${order.getID()}" />">
-						            <button class="btn btn-primary" style="margin-right:10px" title="Edit order">
-							            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-											  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-											  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+								</a>
+								<form action=<c:url value="/order/edit/${order.getID()}"/> method="POST">
+									<button class="btn btn-primary" style="margin-right:10px" title="Edit order">
+							            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+											<path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+											<path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
 										</svg>
 									</button>
-								</a> 
+								</form> 
+								</div>
 							</td>
 			       		</tr>
 			        </c:forEach>

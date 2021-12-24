@@ -114,7 +114,19 @@
 		            	<td><c:out value="${account.getAddress()}"/></td>
 		            	<td><c:out value="${account.getEmail()}"/></td>
 		            	<td><c:out value="${account.getType()}"/></td>
-		            	<td><c:out value="${account.getStatus()}"/></td>
+		            	
+		            	<td>
+		            		<div>
+								<c:choose>
+									<c:when test="${account.getStatus() == 'Active'}">
+										<a id="category-active" name="Active" value="Active" style="color: green; font-weight: bold;">Active</a>
+									</c:when>
+									<c:otherwise>
+										<a id="category-lock" name="Block" value="Block" style="color: red; font-weight: bold;">Block</a>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</td>
 		            	<td>
 		            		<div class="manager-button" style="display: flex">
 				            	<a href="<c:url value="/account/edit/${account.getID() }" />">

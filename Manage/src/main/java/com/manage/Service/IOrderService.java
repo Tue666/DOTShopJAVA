@@ -8,11 +8,8 @@ import com.manage.Models.OrderModel;
 public interface IOrderService {
 	List<OrderModel> getOrder();
 
-	String insertOrder(int id,int customerID,String customerName,String customerPhone, String customerAddress, String customerEmail, String createdDay, String status);
-	
-	int updateOrder(String customerName,String customerPhone, String customerAddress, String customerEmail, String createdDay, String status, int ID);
+	int updateOrder(String status, int ID);
 
 	OrderModel findByID(int ID);
 	
-	int removeOrder(int ID);
 }
